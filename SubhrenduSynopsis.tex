@@ -1,0 +1,200 @@
+\documentclass[twoside,fancyhdr]{18_format/csethesis}
+%\documentclass{18_format/iitgthesis}
+\pdfminorversion=7
+\listfiles
+\input{17_Util/usepackage}
+\usepackage{pdfpages}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\thesection}{\arabic{section}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%=============================================================================
+% SEGREGATE THE BIBLIOGRAPHY
+%=============================================================================
+%\newcites{th}{Publications Related to Thesis}
+%\newcites{gen}{Other Publications of the Author}
+\addbibresource{20_bibilography/ref-article.bib}
+\addbibresource{20_bibilography/ref-proc.bib}
+\addbibresource{20_bibilography/ref-oth.bib}
+%\addbibresource{20_bibilography/total6.bib}
+%\addbibresource{20_bibilography/new.bib}
+\addbibresource{20_bibilography/mypub.bib}
+%%%%%%%%%%%%%%%%
+\DeclareCiteCommand{\citenum}
+  {}
+  {\printfield{labelnumber}}
+  {}
+  {}
+%%%%%%%%%%%%%%%%  
+\defbibenvironment{mypubs}
+  {\enumerate[label={[T.\arabic*]}]
+     {}
+     {\setlength{\labelwidth}{\labelnumberwidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}%
+      \renewcommand*{\makelabel}[1]{\hss##1}}
+  {\endenumerate}
+  {\item}
+%%%%%%%%%%%%%%%%
+\defbibenvironment{mypuboth}
+  {\enumerate[label={[O.\arabic*]}]
+     {}
+     {\setlength{\labelwidth}{\labelnumberwidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}%
+      \renewcommand*{\makelabel}[1]{\hss##1}}
+  {\endenumerate}
+  {\item}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{17_Util/newcommands}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\def\macro{Modular and Response}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\linenumbers
+%\usepackage{style/qtree}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\phdtitle = {{SDN for Large Scale IoT Networks}} % { and } are needed around your name
+%\phdtitle = {{Light-weight Self-stabilizing Dynamic NIB Placement For Distributed Large Scale SDN}}
+\name = {Subhrendu Chattopadhyay}          % and other fields. don't remove.
+\rollno = {146101002}
+\guide = {Prof. Sukumar Nandi}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+  %%%% Front Cover Page
+  \pagenumbering{alph}
+  \pagenumbering{alph}
+  \input{0-cover/cover}
+  %\linenumbers
+%  \blankpage
+  %\startOddPage
+  \pagenumbering{roman}
+  \pdfbookmark{Title Page}{Title Page}
+%  \input{0-title/title}
+%%%%%%%%%%%%%%%%%%%%%
+\newgeometry{margin=0pt}
+\chapter*{}
+\pagenumbering{roman}
+\thispagestyle{empty}
+%\begin{titlepage}
+\begin{center}
+%\textheight 5in \textwidth 12.5in {\huge\sf  \textbf{  }}\\[5ex]
+\textheight 16in \textwidth 12.5in {\huge\sf  \textbf{\the\phdtitle}}\\[20ex]
+{\Large{\textit{
+%{\Large \bf Synopsis Report}\\
+{Synopsis submitted in partial fulfilment \\of the requirements
+for the degree of\\
+[5ex]{\Large \bf Doctor of Philosophy}
+}}}}\\
+[5ex] \large\emph{by} \\[1ex]
+{\sf \sf \Large\bf{\the\name}}\\[5ex]
+\large\textit{under the supervision of}\\[2ex]
+{\Large \bf \the\guide} \\[5ex]
+
+%\vspace{.05in}
+ \begin{figure}
+    \begin{minipage}{\linewidth}
+      \centering
+      \includegraphics[scale=.9]{0-title/iitg_logo}
+    \end{minipage} 
+  \end{figure}
+
+%{\sl \bf{to the}} \\[1ex]
+{\large \bf Department of Computer Science and Engineering}  \\[1ex]
+{\Large \bf{INDIAN INSTITUTE OF TECHNOLOGY GUWAHATI \\GUWAHATI - 781039, INDIA}}\\
+{\large\bf {\today}}
+\end{center}
+\restoregeometry
+%%%%%%%%%%%%%%%%%%%%%
+  \startOddPage
+%  \input{0-certificate/certificate}
+%  \clearpage  
+%  \startOddPage
+%  \input{0-acknowledgement/acknowledgement}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  \input{C0_abstract/abstract}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+  \chapter*{List of Abbreviations}
+  \input{20_bibilography/acro_list}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \cleardoublepage
+  \typeout{}
+  \pagenumbering{arabic}
+  \def\headrulehook{\color{black}}      % Color the header rule
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \acresetall
+	\doublespace
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{Synopsis}
+\section{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Motivation for This Thesis}
+%%%%%%%%%%%%%%%%%%%%%%%%
+ \section{Contributions}
+%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Organization of The Thesis}
+  \acresetall
+The organization of the final thesis is as follows.
+\begin{description}
+\item \textbf{Chapter 1: Introduction}\\
+	Discusses the recent advances in \addac{LSN}, motivation, and problem definition for the thesis.
+\item \textbf{Chapter 2: Background}\\
+	Discusses the important pre-requisites and definitions which are used in the thesis.
+\item \textbf{Chapter 3: SDN-MPTCP: MPTCP Sub-Flow Management Over \addac{LSN}}\\
+	Proposes \paperName{SDN-MPTCP} which improves performance of \addac{MPTCP} based transport protocol executing on top of \addac{LSN} by providing Sub-Flow management framework to reduce \emph{``Out-of-order"} segments.
+\item \textbf{Chapter 4: Flipper: Dynamic NIB Placement For Distributed SDN}\\
+	Proposes \paperName{FLIPPER} architecture which reduces \addac{capex}/\addac{opex} challenge by employing \addac{SDN} like control on top of \addac{COTS} devices.
+\item \textbf{Chapter 5: Aloe: An Elastic Auto-Scaled and Self-stabilized Orchestration Framework for \addac{LSN} Applications}\\
+	Extends \paperName{FLIPPER} principle to develop an auto-scalable and light weight fault-tolerant distributed control plane for management of \addac{LSN}.
+\item \textbf{Chapter 6: Amalgam: Distributed Network Control With Scalable Service Chaining}\\
+	Enhances \paperName{Aloe} to exploit \addac{INP} framework of \addac{LSN} to ensure a scalable \addac{SFC} management by integrating distributed network control and distributed service function chain management.
+\item \textbf{Chapter 7: Conclusion and Future Work}\\
+	Concludes the thesis with pointing to future works.
+\end{description}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\input{C5_amalgam/tex/100_acronym}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \cleardoublepage
+  \phantomsection
+  %\bibliographystyle{plain}
+  %\nocite{*}
+  %%  Primary bibliography  %%
+  %\bibliographystyle{ieee/IEEEtran}
+  %\bibliographystyle{alpha}
+  \bibliographystyle{unsrt}
+  %\bibliography{20_bibilography/total6.bib,20_bibilography/new.bib,20_bibilography/mypub.bib}
+  \pdfbookmark{References}{References}
+  \printbibliography[title={References},notkeyword=own,notkeyword=ownth]
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%  Author's Corner  %%
+  %%  Publication Related to thesis %%
+  \cleardoublepage
+  \phantomsection
+  %\bibliographystyle{annotate}
+  \pdfbookmark{Publications Related to Thesis}{Publications Related to Thesis}
+  \phantom{\cite{chattopadhyay2017primary,chattopadhyay2018improving,chattopadhyay2017flipper}
+  \cite{chattopadhyay2018aloe,chattopadhyay2020aloe,chattopadhyay2020amalgam}}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \printbibliography[env=mypubs,title={Publications Related to Thesis},keyword=ownth, resetnumbers]
+   \phantom{\cite{chakraborty2013surpassing}
+   \cite{chakraborty2014defending,karmakar2014trigger,chattopadhayay2016leveraging}
+   \cite{chakraborty2016es2,sett2016time,chakraborty2016alleviating,pranav2017fast,nath2019ptc:own}}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %  \bibliographystyle{apalike}
+    \pdfbookmark{Other Publications}{Other Publications}
+    \printbibliography[env=mypuboth,title={Other Publications of the Author},keyword=own,resetnumbers]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%% Back Cover Page
+  \input{100-back/back}
+%  \includepdf[pages={4}]{C0_Cover.pdf}
+%\printLog
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

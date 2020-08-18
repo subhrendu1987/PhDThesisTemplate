@@ -1,0 +1,189 @@
+\documentclass[twoside,fancyhdr]{18_format/csethesis}
+%\documentclass{18_format/iitgthesis}
+\pdfminorversion=7
+\listfiles
+\input{17_Util/usepackage}
+\usepackage{pdfpages}
+%\setlist[description]{style = multiline, labelwidth = 40pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%=============================================================================
+% SEGREGATE THE BIBLIOGRAPHY
+%=============================================================================
+%\newcites{th}{Publications Related to Thesis}
+%\newcites{gen}{Other Publications of the Author}
+\addbibresource{20_bibilography/ref-article.bib}
+\addbibresource{20_bibilography/ref-proc.bib}
+\addbibresource{20_bibilography/ref-oth.bib}
+%\addbibresource{20_bibilography/total6.bib}
+%\addbibresource{20_bibilography/new.bib}
+\addbibresource{20_bibilography/mypub.bib}
+%%%%%%%%%%%%%%%%
+\DeclareCiteCommand{\citenum}
+  {}
+  {\printfield{labelnumber}}
+  {}
+  {}
+%%%%%%%%%%%%%%%%  
+\defbibenvironment{mypubs}
+  {\enumerate[label={[T.\arabic*]}]
+     {}
+     {\setlength{\labelwidth}{\labelnumberwidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}%
+      \renewcommand*{\makelabel}[1]{\hss##1}}
+  {\endenumerate}
+  {\item}
+%%%%%%%%%%%%%%%%
+\defbibenvironment{mypuboth}
+  {\enumerate[label={[O.\arabic*]}]
+     {}
+     {\setlength{\labelwidth}{\labelnumberwidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}%
+      \renewcommand*{\makelabel}[1]{\hss##1}}
+  {\endenumerate}
+  {\item}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{17_Util/newcommands}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\def\macro{Modular and Response}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\linenumbers
+%\usepackage{style/qtree}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\phdtitle = {{SDN for Large Scale IoT Networks}} % { and } are needed around your name
+%\phdtitle = {{Light-weight Self-stabilizing Dynamic NIB Placement For Distributed Large Scale SDN}}
+\name = {Subhrendu Chattopadhyay}          % and other fields. don't remove.
+\rollno = {146101002}
+\guide = {Prof. Sukumar Nandi}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+  %%%% Front Cover Page
+  \pagenumbering{alph}
+  \pdfbookmark{Front Cover}{Front Cover}
+  \input{0-cover/cover}
+%  \includepdf[pages={2}]{C0_Cover.pdf}
+  %\linenumbers
+    \clearpage  
+  %\blankpage
+  %\startOddPage
+  \pagenumbering{roman}
+  \pdfbookmark{Title Page}{Title Page}
+  \input{0-title/title}
+  \startOddPage
+  \input{0-certificate/certificate}
+  \clearpage  
+  %\startOddPage
+  \input{0-acknowledgement/acknowledgement}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \input{C0_abstract/abstract}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+  \pdfbookmark{\contentsname}{Contents}
+  \tableofcontents
+  \cleardoublepage
+  \listoffigures
+  \cleardoublepage
+  \listoftables
+  \cleardoublepage
+  \pdfbookmark{List of Algorithms}{List of Algorithms}
+  \listofalgorithms
+  \chapter*{List of Abbreviations}
+  \addcontentsline{toc}{chapter}{List of Abbreviations}
+  \input{20_bibilography/acro_list}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \cleardoublepage
+  \typeout{}
+  \pagenumbering{arabic}
+  \def\headrulehook{\color{black}}      % Color the header rule
+  %========== Chapters
+  %\typeout{}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %\cleardoublepage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   \chapter{Index Tester}
+%   \label{tester}
+%   \subsection{termtt}
+%   \termtt[l2tp]{Layer 2 Tunneling Protocol} between the AWS instances. Every infrastructure node, both in the testbed and in the AWS, are configured with \termtt[OVS]{open virtual switch}\\
+%   \termtt[l2tp]{Layer 2 Tunneling Protocol} between the AWS instances. Every infrastructure node, both in the testbed and in the AWS, are configured with \termtt{OVS}
+%   \subsection{addac}
+%   \addac[SDN]{Software defined networking} , \addac[AWS]{Amazon Web Services}\\
+%   \addac[SDN]{Software defined networking} , \addac{AWS}.
+%   \subsection{Conditional acronym}
+%   \iflabelexists{acro:l2tp}{Defined \ref{acro:l2tp}}{ Not \cref{introduction}} \iflabelexists{tester}{\cref{tester}}{\ref{tester}} \iflabelexists{ABC}{\cref{tester}}{Not\ref{tester}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \acresetall
+  \chapter{Introduction}
+	\label{introduction}
+	\doublespace
+	\input{C1_intro/introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  \chapter[SDN-MPTCP]{\blfootnote{Has been published in \\ \fullcitenum{chattopadhyay2017primary}\\ \fullcitenum{chattopadhyay2018improving}}SDN-MPTCP: MPTCP Sub-Flow Management Over \addac{LSN}}
+%	\label{chapter2}
+	%\blfootnote{Has been published in \citeth{chattopadhyay2017primary},\citeth{chattopadhyay2018improving}}
+%	\input{C2_mptcp/tex/c2_main}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\input{C5_amalgam/tex/100_acronym}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \cleardoublepage
+  \phantomsection
+  %\bibliographystyle{plain}
+  %\nocite{*}
+  %%  Primary bibliography  %%
+  %\bibliographystyle{ieee/IEEEtran}
+  %\bibliographystyle{alpha}
+  %\bibliographystyle{unsrt}
+  %\bibliography{20_bibilography/total6.bib,20_bibilography/new.bib,20_bibilography/mypub.bib}
+  \pdfbookmark{References}{References}
+  \printbibliography[title={References},notkeyword=own,notkeyword=ownth]
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%% For Checking Bibliography Uniformity 
+  %\printbibliography[heading=bibintoc,title={Whole bibliography}]
+%  \printbibliography[type=article,notkeyword=own,notkeyword=ownth, title={Articles only},heading=subbibintoc]
+%  \printbibliography[type=book,notkeyword=own,notkeyword=ownth, title={Books only}, heading=subbibintoc]
+%  \printbibliography[type=inproceedings,notkeyword=own,notkeyword=ownth, title={Conferences only},heading=subbibintoc]
+%  \printbibliography[type=report,notkeyword=own,notkeyword=ownth, title={TechReport only},heading=subbibintoc]
+%  \printbibliography[type=misc,notkeyword=own,notkeyword=ownth, title={Misc only},heading=subbibintoc]
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%  Author's Corner  %%
+  %%  Publication Related to thesis %%
+  \cleardoublepage
+  \phantomsection
+  %\bibliographystyle{annotate}
+  \pdfbookmark{Publications Related to Thesis}{Publications Related to Thesis}
+  \printbibliography[env=mypubs,title={Publications Related to Thesis},keyword=ownth, resetnumbers]
+  \cleardoublepage
+  %%%%%%%%%%%%%%%%%%%%%
+  \chapter*{Brief Biography of the Author}
+  \pdfbookmark{Bio}{Biography}
+  \input{19_extra/bio}
+  %\cleardoublepage
+  %%%%%%%%%%%%%%%%%%%%%
+    \clearpage
+    \printbibliography[env=mypuboth,title={Other Publications of the Author},keyword=own,resetnumbers]
+    \pdfbookmark{Other Publications}{Other Publications}
+    \phantom{\cite{chakraborty2013surpassing}
+   \cite{chakraborty2014defending,karmakar2014trigger,chattopadhayay2016leveraging}
+   \cite{chakraborty2016es2,sett2016time,chakraborty2016alleviating,pranav2017fast,nath2019ptc:own}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \cleardoublepage
+  \phantomsection
+  \addcontentsline{toc}{chapter}{\indexname}
+  \printindex[term]
+  \printindex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%% Back Cover Page
+  \pdfbookmark{Back Cover}{Back Cover}
+  \input{100-back/back}
+%  \includepdf[pages={4}]{C0_Cover.pdf}
+%\printLog
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\jacket
+\end{document}

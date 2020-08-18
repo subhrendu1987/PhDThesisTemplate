@@ -1,0 +1,45 @@
+### Merge bib files
+bibtool -s -d Chapter1.bib total2.bib >total3.bib
+
+### .tex to .txt for grammerly checking
+detex ../2_Task1/3_probdef.tex > test.txt
+
+### git
+git config credential.helper store
+
+### draw.io to eps
+Save as PDF or PNG
+#### PNG
+sam2p in.png 
+#### PDF
+pdf2ps MPTCP-Flow.pdf
+ps2eps -f MPTCP-Flow.ps
+
+
+### Sample Find keyword and open
+grep -rwn --include=*.tex "HassasYeganeh:2012:KFE:2342441.2342446" . | awk -F':' '{print $1}'| xargs open
+### Sample xargs
+ls *.aux | xargs -n1 sh -c 'bibtex "$1"' sh
+### Important grep regex
+#### find pattern 
+`egrep -rwn '\\\b[a-z]+\{\b[A-Z]+\}\{' .`
+`egrep -rwn --include='*.tex' '[\\][[:alpha:]]*[\[]' .`
+`grep -rwn --include="*.tex" "[\\]addac" . |grep -o "[\\]addac[\{][[:alpha:]]*[\}]"`
+`grep -rwno --include="*.tex" "[\\]term[[:alpha:]]*[\{][[:alpha:]]*[\}]"`
+`grep -rwn --include="*.tex" "[\\]term" . |grep -o "[\\]term[\{][[:alpha:]]*[\}]"`
+`grep -rwn --include="*.tex" "[\\]term" . |grep -o "[\\]termtt[\{][[:alpha:]]*[\}]"`
+#### Search Filename and line number only
+grep -rwn "Aloe " . |cut -f1,2 -d:
+#### Find acronyms
+`egrep -rn '[[:space:]\(][[:upper:]]+[[:alpha:]]*[[:upper:]][[:punct:][:space:]]' .`
+### Sublime replace with acronym
+Search RegEx:	([[:blank:]])([[:upper:]]+[[:alpha:]]*[[:upper:]]+)
+Replace RegEx:	 \\addac{\2}
+Replace lowercase option should be off
+#### Find all terms
+`egrep -rn "[[:space:]][[:upper:]][[:alpha:]]+[[:upper:]][[:space:]]" 1_intro/`
+
+
+#### Find an acronym definition
+`grep -rwno --include="*.tex" "[\\]addacm[[:graph:]]UC[[:graph:]]" .` # search UC
+`head -n LINE_NUMBER FILE_NAME | tail -n LINE_NUMBER`

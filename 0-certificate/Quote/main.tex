@@ -1,0 +1,44 @@
+\documentclass[24pt,a6paper,landscape,]{scrartcl}
+
+\usepackage{silence}
+\WarningFilter{latex}{Command \InputIfFileExists}
+
+%%% For accessing system, OTF and TTF fonts
+%%% (would have been loaded by polylossia anyway)
+\usepackage{fontspec}
+\usepackage{xunicode} %% loading this first to avoid clash with bidi/arabic
+
+%%% For language switching -- like babel, but for xelatex
+\usepackage{polyglossia}
+
+%%% For the xelatex (and other LaTeX friends) logos
+\usepackage{hologo}
+
+%%% For the awesome fontawesome icons!
+\usepackage{../../style/fontawesome}
+
+\usepackage[hyphens]{url}
+\usepackage{geometry}
+
+\setmainlanguage{english}
+\setotherlanguages{sanskrit} %% or other languages
+
+
+% Main serif font for English (Latin alphabet) text
+\setmainfont{Noto Serif}
+\setsansfont{Noto Sans}
+\setmonofont{Noto Mono}
+
+\newfontfamily\devanagarifont[Script=Devanagari]{Noto Serif Devanagari}
+%%% CJK needs a different treatment
+%\usepackage[space]{xeCJK}
+
+\begin{document}
+\newgeometry{margin=0pt}
+\begin{center}
+\begin{sanskrit}
+वितर्कविचारानन्दास्मितानुगमात सम्प्रज्ञातः।
+\end{sanskrit}\\
+%This absolute knowledge is engendered incrementally by divination, experience, joy, and ultimately the feeling of oneness
+\end{center}
+\end{document}
