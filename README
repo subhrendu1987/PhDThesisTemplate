@@ -16,6 +16,7 @@
 `ps2eps -f MPTCP-Flow.ps`
 
 ### How to build
+## Change the acronyms in "20_bibilography/acro_list.tex"
 ## Build Thesis
 `make`
 ## In case of bibliographical issues, `make` twice back to back.
